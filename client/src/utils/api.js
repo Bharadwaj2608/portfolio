@@ -42,4 +42,4 @@ export const statsAPI = {
   get: () => api.get('/stats')
 };
 
-export default api;s
+export default api;
