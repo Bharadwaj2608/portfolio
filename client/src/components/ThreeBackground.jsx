@@ -104,8 +104,8 @@ export default function ThreeBackground() {
         (Math.random() - 0.5) * 60,
         (Math.random() - 0.5) * 30 - 5
       );
-      const s = Math.random() * 3 + 1;
-      mesh.scale.set(s, s, s);
+      const scale = Math.random() * 3 + 1;
+      mesh.scale.set(scale, scale, scale);
       mesh.userData = {
         speed: Math.random() * 0.003 + 0.001,
         rotX: (Math.random() - 0.5) * 0.005,
@@ -184,11 +184,11 @@ export default function ThreeBackground() {
       camera.position.z = 30 - scrollY * 0.008;
 
       // Float shapes
-      shapes.forEach(s => {
-        s.rotation.x += s.userData.rotX;
-        s.rotation.y += s.userData.rotY;
-        s.position.y = s.userData.initY + Math.sin(frame * s.userData.floatFreq) * s.userData.floatAmp;
-      });
+      shapes.forEach(shape => {
+  shape.rotation.x += shape.userData.rotX;
+  shape.rotation.y += shape.userData.rotY;
+  shape.position.y = shape.userData.initY + Math.sin(frame * shape.userData.floatFreq) * shape.userData.floatAmp;
+});
 
       renderer.render(scene, camera);
     };
