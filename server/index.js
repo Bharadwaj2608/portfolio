@@ -16,19 +16,8 @@ const app = express();
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: function(origin, callback) {
-    const allowed = [
-      process.env.CLIENT_URL,
-      'https://portfolio-three-lyart-41.vercel.app',
-      'https://portfolio-git-main-bharadwaj2608s-projects.vercel.app',
-    ];
-    if (!origin || allowed.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
+  origin: '*',
+  credentials: false
 }));
 
 // Rate limiting
