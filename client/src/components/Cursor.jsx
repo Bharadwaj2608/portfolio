@@ -28,14 +28,21 @@ export default function Cursor() {
     const onLeave = () => ring.classList.remove('hover');
 
     window.addEventListener('mousemove', onMove);
-    document.querySelectorAll('a,button,.card-hover').forEach(el => {
-      el.addEventListener('mouseenter', onEnter);
-      el.addEventListener('mouseleave', onLeave);
-    });
+
+    // ← Fix: wait for DOM to be ready before querying
+    const timeout = setTimeout(() => {
+      document.querySelectorAll('a, button, .card-hover').forEach(el => {
+        el.addEventListener('mouseenter', onEnter);
+        el.addEventListener('mouseleave', onLeave);
+      });
+    }, 500);
 
     animate();
 
-    return () => window.removeEventListener('mousemove', onMove);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
