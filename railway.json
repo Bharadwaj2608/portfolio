@@ -1,7 +1,6 @@
 {
   "build": {
-    "builder": "NIXPACKS",
-    "buildCommand": "npm install"
+    "builder": "DOCKERFILE"
   },
   "deploy": {
     "startCommand": "node index.js",
